@@ -1,8 +1,4 @@
 <div class="page" [ngClass]="{ dark: darkTheme }">
-  <!-- роботы по бокам, видно только на широком экране -->
-  <app-robot side="left" />
-  <app-robot side="right" />
-
   <div class="toolbar">
     <div class="langs">
       @for (l of langs; track l.code) {
