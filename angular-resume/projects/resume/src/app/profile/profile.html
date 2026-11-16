@@ -1,0 +1,20 @@
+<section class="profile">
+  <img [src]="photo" [alt]="fullName" class="photo" />
+
+  <div>
+    <h1>{{ fullName }}</h1>
+    <p class="position">{{ position }}</p>
+
+    <button (click)="toggleContacts()">
+      {{ showContacts ? 'Скрыть контакты' : 'Показать контакты' }}
+    </button>
+
+    @if (showContacts) {
+      <ul class="contacts">
+        <li>Телефон: {{ phone }}</li>
+        <li>Email: <a [href]="'mailto:' + email">{{ email }}</a></li>
+        <li>Город: {{ city }}</li>
+      </ul>
+    }
+  </div>
+</section>
