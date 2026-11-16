@@ -6,11 +6,13 @@ import { Experience } from './experience/experience';
 import { Skills } from './skills/skills';
 import { Projects } from './projects/projects';
 import { Certificates } from './certificates/certificates';
+import { Reveal } from './reveal';
+import { Robot } from './robot/robot';
 import { I18n, Lang } from './i18n';
 
 @Component({
   selector: 'app-root',
-  imports: [NgClass, Profile, Education, Experience, Skills, Certificates, Projects],
+  imports: [NgClass, Reveal, Robot, Profile, Education, Experience, Skills, Certificates, Projects],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

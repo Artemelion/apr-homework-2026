@@ -23,3 +23,22 @@ li {
   cursor: pointer;
   color: var(--green-text);
 }
+
+li {
+  padding-left: 0;
+  transition: padding-left 0.25s, background 0.25s;
+  border-radius: 6px;
+}
+
+li:hover {
+  padding-left: 10px;
+  background: var(--green-soft);
+}
+
+.more:hover .chevron {
+  opacity: 1;
+}
+
+.more {
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+}

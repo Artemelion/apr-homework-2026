@@ -31,8 +31,4 @@ export class Certificates {
   ];
 
   showAll = false;
-
-  get visible() {
-    return this.showAll ? this.certificates : this.certificates.slice(0, 3);
-  }
 }

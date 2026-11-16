@@ -30,3 +30,22 @@ a:hover {
 .stack {
   opacity: 0.6;
 }
+
+li {
+  border-radius: 6px;
+  transition: padding-left 0.25s, background 0.25s;
+}
+
+li:hover {
+  padding-left: 10px;
+  background: var(--green-soft);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.25s;
+}
+
+li:hover .arrow {
+  transform: translate(3px, -3px);
+}

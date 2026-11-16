@@ -72,3 +72,20 @@ h1 {
     justify-content: center;
   }
 }
+
+.photo {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo:hover {
+  transform: scale(1.05) rotate(-3deg);
+  box-shadow: 0 0 0 6px var(--green-soft);
+}
+
+.icon {
+  transition: opacity 0.2s, color 0.2s, transform 0.2s;
+}
+
+.icon:hover {
+  transform: translateY(-3px) scale(1.1);
+}

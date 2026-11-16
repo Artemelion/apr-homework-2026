@@ -3,7 +3,7 @@
   <ul>
     @for (p of projects; track p.name) {
       <li>
-        <a [href]="p.url" target="_blank"><b>{{ p.name }}</b> ↗</a>
+        <a [href]="p.url" target="_blank"><b>{{ p.name }}</b> <span class="arrow">↗</span></a>
         <span class="desc">{{ i18n.pick(p.description) }}</span>
         <span class="stack">{{ p.stack }}</span>
       </li>

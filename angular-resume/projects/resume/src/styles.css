@@ -54,3 +54,48 @@ a {
 .open .chevron {
   transform: rotate(180deg);
 }
+
+/* плавное раскрытие блоков: высота анимируется через grid 0fr -> 1fr */
+.collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.35s ease, opacity 0.35s ease;
+}
+
+.collapse.show {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.collapse > .inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* появление карточек при прокрутке */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* кому мешает анимация - выключаем */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -57,3 +57,32 @@
   padding: 0;
   border-radius: 50%;
 }
+
+.card.visible {
+  transition: opacity 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.visible:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(63, 159, 107, 0.15);
+}
+
+.theme {
+  transition: transform 0.5s ease, background 0.2s;
+}
+
+.theme:hover {
+  transform: rotate(25deg);
+}
+
+.theme:active {
+  transform: rotate(360deg) scale(0.9);
+}
+
+.lang {
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+.lang:hover {
+  transform: translateY(-2px);
+}

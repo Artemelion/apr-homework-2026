@@ -1,20 +1,35 @@
 .job {
-  border: 1px solid rgba(128, 128, 128, 0.3);
-  border-radius: 6px;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 8px;
   padding: 10px 14px;
   margin-bottom: 8px;
   cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
 .job:hover {
-  background: rgba(128, 128, 128, 0.08);
+  border-color: var(--green-border);
+  transform: translateX(4px);
+  box-shadow: -3px 0 0 var(--green);
 }
-
 
 .job.open {
   background: var(--green-soft);
+  border-color: var(--green-border);
+  box-shadow: -3px 0 0 var(--green);
 }
 
+.job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.job:hover .chevron {
+  opacity: 1;
+  color: var(--green-text);
+}
 
 .company {
   opacity: 0.7;
@@ -23,13 +38,10 @@
 }
 
 .job ul {
-  margin: 8px 0 0;
+  margin: 8px 0 2px;
   padding-left: 20px;
 }
 
-.job-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+.job li {
+  margin-bottom: 4px;
 }

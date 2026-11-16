@@ -1,13 +1,26 @@
 <section>
   <h2>{{ i18n.t('certificates') }}</h2>
   <ul>
-    @for (c of visible; track c.name) {
+    @for (c of certificates.slice(0, 3); track c.name) {
       <li>
         <b>{{ c.name }}</b>
         <span class="issuer">{{ c.issuer }}</span>
       </li>
     }
   </ul>
+
+  <div class="collapse" [ngClass]="{ show: showAll }">
+    <div class="inner">
+      <ul>
+        @for (c of certificates.slice(3); track c.name) {
+          <li>
+            <b>{{ c.name }}</b>
+            <span class="issuer">{{ c.issuer }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
 
   <div class="more" [ngClass]="{ open: showAll }" (click)="showAll = !showAll">
     <span>{{ showAll ? i18n.t('showLess') : i18n.t('showAll') + ' (' + certificates.length + ')' }}</span>

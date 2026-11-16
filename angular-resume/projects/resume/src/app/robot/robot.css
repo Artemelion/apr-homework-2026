@@ -1,0 +1,209 @@
+:host {
+  position: fixed;
+  bottom: 40px;
+  width: 140px;
+  pointer-events: none;
+  z-index: 0;
+  --shell: #ffffff;
+  --screen: #1f2a24;
+  --glow: #8fd6ad;
+}
+
+:host(.left) {
+  left: calc(50% - 500px - 190px);
+}
+
+:host(.right) {
+  right: calc(50% - 500px - 190px);
+  bottom: 55%;
+}
+
+/* правый робот зеркальный */
+:host(.right) .bot {
+  transform: scaleX(-1);
+}
+
+:host-context(.dark) {
+  --shell: #2f3832;
+  --screen: #111714;
+}
+
+/* на узких экранах роботам нет места */
+@media (max-width: 1400px) {
+  :host {
+    display: none;
+  }
+}
+
+.bot {
+  width: 100%;
+  overflow: visible;
+}
+
+.body {
+  animation: float 4s ease-in-out infinite;
+}
+
+:host(.right) .body {
+  animation-delay: -2s;
+}
+
+.shadow {
+  fill: rgba(0, 0, 0, 0.12);
+  animation: shadow 4s ease-in-out infinite;
+  transform-origin: 70px 218px;
+}
+
+:host(.right) .shadow {
+  animation-delay: -2s;
+}
+
+.shell {
+  fill: var(--shell);
+  stroke: var(--green);
+  stroke-width: 3;
+}
+
+.stroke {
+  stroke: var(--green);
+  stroke-width: 3;
+}
+
+.screen {
+  fill: var(--screen);
+}
+
+.light {
+  fill: var(--green);
+  animation: blink-light 1.6s ease-in-out infinite;
+}
+
+.eyes {
+  transition: transform 0.15s ease-out;
+}
+
+.eye {
+  fill: var(--glow);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 5s infinite;
+}
+
+.smile {
+  fill: none;
+  stroke: var(--glow);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.dot {
+  fill: var(--glow);
+  animation: dots 1.5s ease-in-out infinite;
+}
+
+.d2 {
+  animation-delay: 0.25s;
+}
+
+.d3 {
+  animation-delay: 0.5s;
+}
+
+.bar {
+  fill: var(--green-soft);
+  stroke: var(--green);
+  stroke-width: 1.5;
+}
+
+.arm {
+  transform-box: fill-box;
+  transform-origin: 50% 8px;
+}
+
+.arm-wave {
+  animation: wave 3s ease-in-out infinite;
+}
+
+.arm-left {
+  animation: sway 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shadow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes blink-light {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes dots {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(-150deg);
+  }
+  80% {
+    transform: rotate(-120deg);
+  }
+  90% {
+    transform: rotate(-150deg);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}

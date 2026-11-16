@@ -11,13 +11,15 @@
         <!-- стрелочка: вниз - свёрнуто, вверх - раскрыто -->
         <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
       </div>
-      @if (opened === i) {
-        <ul>
-          @for (p of job.points; track $index) {
-            <li>{{ i18n.pick(p) }}</li>
-          }
-        </ul>
-      }
+      <div class="collapse" [ngClass]="{ show: opened === i }">
+        <div class="inner">
+          <ul>
+            @for (p of job.points; track $index) {
+              <li>{{ i18n.pick(p) }}</li>
+            }
+          </ul>
+        </div>
+      </div>
     </div>
   }
 </section>

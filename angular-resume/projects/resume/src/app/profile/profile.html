@@ -17,11 +17,13 @@
       {{ showContacts ? i18n.t('hideContacts') : i18n.t('showContacts') }}
     </button>
 
-    @if (showContacts) {
-      <ul class="contacts">
+    <div class="collapse" [ngClass]="{ show: showContacts }">
+      <div class="inner">
+        <ul class="contacts">
         <li>{{ i18n.t('phone') }}: <a [href]="'tel:' + phone">{{ phoneText }}</a></li>
         <li>Email: <a [href]="'mailto:' + email">{{ email }}</a></li>
-      </ul>
-    }
+        </ul>
+      </div>
+    </div>
   </div>
 </section>

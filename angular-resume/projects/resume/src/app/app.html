@@ -1,4 +1,8 @@
 <div class="page" [ngClass]="{ dark: darkTheme }">
+  <!-- роботы по бокам, видно только на широком экране -->
+  <app-robot side="left" />
+  <app-robot side="right" />
+
   <div class="toolbar">
     <div class="langs">
       @for (l of langs; track l.code) {
@@ -14,32 +18,32 @@
     </button>
   </div>
 
-  <div class="card">
+  <div class="card" reveal>
     <app-profile />
   </div>
 
-  <div class="card">
+  <div class="card" reveal>
     <h2>{{ i18n.t('about') }}</h2>
     <p>{{ i18n.t('aboutText') }}</p>
   </div>
 
-  <div class="card">
+  <div class="card" reveal>
     <app-experience />
   </div>
 
-  <div class="card">
+  <div class="card" reveal>
     <app-skills />
   </div>
 
-  <div class="card">
+  <div class="card" reveal>
     <app-education />
   </div>
 
-  <div class="card">
+  <div class="card" reveal>
     <app-certificates />
   </div>
 
-  <div class="card">
+  <div class="card" reveal>
     <app-projects />
   </div>
 </div>

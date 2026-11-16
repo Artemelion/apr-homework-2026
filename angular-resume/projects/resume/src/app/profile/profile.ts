@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
+import { NgClass } from '@angular/common';
 import { I18n } from '../i18n';
 
 // компонент с основной информацией: имя, контакты, фото
 @Component({
   selector: 'app-profile',
+  imports: [NgClass],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
