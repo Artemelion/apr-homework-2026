@@ -1,26 +1,89 @@
-
-
-.groups {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 14px;
+/* цвета как в графе Obsidian */
+.graph {
+  --bg: #f6f6f8;
+  --line: #c9c9d1;
+  --node: #8a8a96;
+  --text: #55555f;
+  --accent: #7f6df2;
+  background: var(--bg);
+  border-radius: 8px;
+  overflow: hidden;
+  touch-action: none;
 }
 
-h3 {
-  font-size: 1em;
-  margin: 0 0 6px;
+:host-context(.dark) .graph {
+  --bg: #1e1e1e;
+  --line: #3a3a3f;
+  --node: #9a9aa5;
+  --text: #b5b5bd;
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+svg {
+  display: block;
+  width: 100%;
+  height: 460px;
+  user-select: none;
 }
 
-.tag {
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 0.85em;
-  background: rgba(74, 123, 208, 0.12);
-  border: 1px solid rgba(74, 123, 208, 0.35);
+line {
+  stroke: var(--line);
+  stroke-width: 1;
+  transition: stroke 0.2s, opacity 0.2s;
+}
+
+.node {
+  cursor: grab;
+  transition: opacity 0.2s;
+}
+
+.node:active {
+  cursor: grabbing;
+}
+
+circle {
+  fill: var(--node);
+  transition: fill 0.2s;
+}
+
+.group circle,
+.center circle {
+  fill: var(--accent);
+}
+
+text {
+  fill: var(--text);
+  font-size: 10px;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.group text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.center text {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* при наведении всё лишнее затемняется, соседи подсвечиваются */
+.focus .node,
+.focus line {
+  opacity: 0.2;
+}
+
+.focus .node.active,
+.focus line.active {
+  opacity: 1;
+}
+
+.focus .node.active circle,
+line.active {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+.node.active circle {
+  filter: drop-shadow(0 0 4px var(--accent));
 }

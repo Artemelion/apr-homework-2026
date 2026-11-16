@@ -39,6 +39,7 @@ const texts: Record<string, Tr> = {
     'Бакалавр, 122 «Компьютерные науки», с 2024',
     'Bachelor of Computer Science (122), since 2024',
   ],
+  certificates: ['Сертифікати', 'Сертификаты', 'Certificates'],
   links: ['Посилання', 'Ссылки', 'Links'],
 };
 

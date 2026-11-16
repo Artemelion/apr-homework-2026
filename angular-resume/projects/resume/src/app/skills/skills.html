@@ -1,16 +1,38 @@
 <section>
   <h2>{{ i18n.t('skills') }}</h2>
 
-  <div class="groups">
-    @for (g of groups; track $index) {
-      <div>
-        <h3>{{ i18n.pick(g.title) }}</h3>
-        <div class="tags">
-          @for (item of g.items; track item) {
-            <span class="tag">{{ item }}</span>
-          }
-        </div>
-      </div>
-    }
+  <div class="graph">
+    <svg
+      #svg
+      [attr.viewBox]="viewBox"
+      preserveAspectRatio="xMidYMid meet"
+      [ngClass]="{ focus: hovered }"
+      (pointermove)="onMove($event)"
+      (pointerup)="endDrag()"
+      (pointerleave)="endDrag()"
+    >
+      @for (l of links; track $index) {
+        <line
+          [attr.x1]="l.a.x"
+          [attr.y1]="l.a.y"
+          [attr.x2]="l.b.x"
+          [attr.y2]="l.b.y"
+          [ngClass]="{ active: linkActive(l) }"
+        />
+      }
+
+      @for (n of nodes; track n.id) {
+        <g
+          class="node"
+          [ngClass]="[n.type, isActive(n.id) ? 'active' : '']"
+          (pointerenter)="hovered = n.id"
+          (pointerleave)="hovered = null"
+          (pointerdown)="startDrag($event, n)"
+        >
+          <circle [attr.cx]="n.x" [attr.cy]="n.y" [attr.r]="radius(n)" />
+          <text [attr.x]="n.x" [attr.y]="n.y + radius(n) + 11">{{ i18n.pick(n.label) }}</text>
+        </g>
+      }
+    </svg>
   </div>
 </section>

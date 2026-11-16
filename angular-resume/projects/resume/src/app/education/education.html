@@ -3,3 +3,11 @@
   <p class="uni"><b>{{ i18n.t('university') }}</b></p>
   <p class="spec">{{ i18n.t('specialty') }}</p>
 </section>
+
+<section class="certs">
+  <h2>{{ i18n.t('certificates') }}</h2>
+  @for (c of certificates; track c.name) {
+    <p class="uni"><b>{{ c.name }}</b></p>
+    <p class="spec">{{ c.issuer }}</p>
+  }
+</section>
