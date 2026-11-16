@@ -24,7 +24,8 @@
   </div>
 
   <div class="card">
-    <app-education />
+    <h2>{{ i18n.t('about') }}</h2>
+    <p>{{ i18n.t('aboutText') }}</p>
   </div>
 
   <div class="card">
@@ -36,15 +37,10 @@
   </div>
 
   <div class="card">
-    <app-links />
+    <app-education />
   </div>
 
   <div class="card">
-    <h2>{{ i18n.t('feedback') }}</h2>
-    <input type="text" [placeholder]="i18n.t('yourName')" [(ngModel)]="visitorName" />
-    <button (click)="like()">👍 {{ likes }}</button>
-    @if (visitorName) {
-      <p>{{ i18n.t('thanks').replace('{name}', visitorName) }}</p>
-    }
+    <app-links />
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { I18n } from '../i18n';
 
-// компонент с основной информацией: ФИО, телефон, город, фото
+// компонент с основной информацией: имя, контакты, фото
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.html',
@@ -10,8 +10,9 @@ import { I18n } from '../i18n';
 export class Profile {
   i18n = inject(I18n);
 
-  phone = '+38 (0XX) XXX-XX-XX';
-  email = 'example@gmail.com';
+  phone = '+380960707437';
+  phoneText = '+380 96 070 74 37';
+  email = 'artommorareboy@gmail.com';
   telegram = 'https://t.me/artyom_morar';
   photo = 'photo.jpg'; // фото из телеграма, лежит в папке public
   showContacts = true;

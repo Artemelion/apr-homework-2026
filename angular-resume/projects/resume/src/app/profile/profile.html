@@ -3,7 +3,7 @@
 
   <div>
     <h1>{{ i18n.t('name') }}</h1>
-    <p class="position">{{ i18n.t('position') }}</p>
+    <p class="position">{{ i18n.t('headline') }}</p>
 
     <button (click)="toggleContacts()">
       {{ showContacts ? i18n.t('hideContacts') : i18n.t('showContacts') }}
@@ -11,10 +11,9 @@
 
     @if (showContacts) {
       <ul class="contacts">
-        <li>{{ i18n.t('phone') }}: {{ phone }}</li>
+        <li>{{ i18n.t('phone') }}: <a [href]="'tel:' + phone">{{ phoneText }}</a></li>
         <li>Email: <a [href]="'mailto:' + email">{{ email }}</a></li>
         <li>Telegram: <a [href]="telegram" target="_blank">@artyom_morar</a></li>
-        <li>{{ i18n.t('city') }}: {{ i18n.t('cityValue') }}</li>
       </ul>
     }
   </div>

@@ -18,7 +18,5 @@ export class Links {
   links: Link[] = [
     { title: 'GitHub', url: 'https://github.com/Artemelion' },
     { title: 'Telegram', url: 'https://t.me/artyom_morar' },
-    { title: 'Weather Forecast', url: 'https://github.com/Artemelion/Weather-Forecast' },
-    { title: 'IT STEP University', url: 'https://itstep.edu.ua/' },
   ];
 }

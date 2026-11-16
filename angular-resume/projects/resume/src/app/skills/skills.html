@@ -1,22 +1,16 @@
 <section>
   <h2>{{ i18n.t('skills') }}</h2>
 
-  @for (skill of skills; track skill.name) {
-    <div class="skill">
-      <span class="skill-name">{{ skill.name }}</span>
-      <div class="bar">
-        <div class="fill" [ngClass]="levelClass(skill.level)" [ngStyle]="{ width: skill.level + '%' }">
-          {{ skill.level }}%
+  <div class="groups">
+    @for (g of groups; track $index) {
+      <div>
+        <h3>{{ i18n.pick(g.title) }}</h3>
+        <div class="tags">
+          @for (item of g.items; track item) {
+            <span class="tag">{{ item }}</span>
+          }
         </div>
       </div>
-    </div>
-  }
-
-
-  <h2>{{ i18n.t('certificates') }}</h2>
-  <ul>
-    @for (cert of certificates; track $index) {
-      <li>{{ i18n.pick(cert) }}</li>
     }
-  </ul>
+  </div>
 </section>

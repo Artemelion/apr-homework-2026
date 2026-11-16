@@ -5,35 +5,41 @@ export type Lang = 'ua' | 'ru' | 'en';
 // [укр, рус, англ] - чтобы не писать три отдельных объекта
 export type Tr = [string, string, string];
 
+// одинаково на всех языках
+export const same = (s: string): Tr => [s, s, s];
+
 const texts: Record<string, Tr> = {
   fontSize: ['Розмір шрифту', 'Размер шрифта', 'Font size'],
   toLight: ['Світла тема', 'Светлая тема', 'Light theme'],
   toDark: ['Темна тема', 'Тёмная тема', 'Dark theme'],
 
-  name: ['Морарь Артем Євгенович', 'Морарь Артём Евгеньевич', 'Artem Morar'],
-  position: ['Junior Web / C++ розробник', 'Junior Web / C++ разработчик', 'Junior Web / C++ Developer'],
+  name: ['Морарь Артем', 'Морарь Артём', 'Artem Morar'],
+  headline: [
+    'IT-адміністратор і розробник · Мережі, сервери, Web',
+    'IT-администратор и разработчик · Сети, серверы, Web',
+    'IT Administrator & Developer · Networks, Servers, Web',
+  ],
   showContacts: ['Показати контакти', 'Показать контакты', 'Show contacts'],
   hideContacts: ['Сховати контакти', 'Скрыть контакты', 'Hide contacts'],
   phone: ['Телефон', 'Телефон', 'Phone'],
-  city: ['Місто', 'Город', 'City'],
-  cityValue: ['Ваше місто', 'Ваш город', 'Your city'],
 
-  education: ['Освіта', 'Образование', 'Education'],
-  university: ['IT STEP University (Університет ШАГ)', 'IT STEP University (Университет ШАГ)', 'IT STEP University'],
-  specialty: [
-    "Бакалавр, 122 «Комп'ютерні науки», група КН-П-241, з 2024",
-    'Бакалавр, 122 «Компьютерные науки», группа КН-П-241, с 2024',
-    "Bachelor, 122 Computer Science, group КН-П-241, since 2024",
+  about: ['Про мене', 'Обо мне', 'About'],
+  aboutText: [
+    "Налаштовую мережі та сервери (Ubiquiti UniFi, Proxmox, Windows Server, Linux), розробляю сайти та e-commerce рішення. Вмію зібрати й продіагностувати ПК, автоматизую рутину скриптами.",
+    'Настраиваю сети и серверы (Ubiquiti UniFi, Proxmox, Windows Server, Linux), разрабатываю сайты и e-commerce решения. Умею собрать и продиагностировать ПК, автоматизирую рутину скриптами.',
+    'I set up networks and servers (Ubiquiti UniFi, Proxmox, Windows Server, Linux) and build websites and e-commerce solutions. I can assemble and troubleshoot PCs and automate routine tasks with scripts.',
   ],
 
-  experience: ['Досвід', 'Опыт работы', 'Experience'],
+  experience: ['Досвід', 'Опыт', 'Experience'],
   skills: ['Навички', 'Навыки', 'Skills'],
-  certificates: ['Сертифікати', 'Сертификаты', 'Certificates'],
+  education: ['Освіта', 'Образование', 'Education'],
+  university: ['IT STEP University', 'IT STEP University', 'IT STEP University'],
+  specialty: [
+    "Бакалавр, 122 «Комп'ютерні науки», з 2024",
+    'Бакалавр, 122 «Компьютерные науки», с 2024',
+    'Bachelor of Computer Science (122), since 2024',
+  ],
   links: ['Посилання', 'Ссылки', 'Links'],
-
-  feedback: ['Залиште відгук', 'Оставьте отзыв', 'Leave feedback'],
-  yourName: ["Ваше ім'я", 'Ваше имя', 'Your name'],
-  thanks: ['Дякую, {name}, що подивились моє резюме!', 'Спасибо, {name}, что посмотрели моё резюме!', 'Thanks for checking out my resume, {name}!'],
 };
 
 const langIndex: Record<Lang, number> = { ua: 0, ru: 1, en: 2 };

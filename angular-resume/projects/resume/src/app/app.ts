@@ -26,15 +26,9 @@ export class App {
   // тему запоминаем, чтобы после перезагрузки не сбрасывалась
   darkTheme = localStorage.getItem('theme') === 'dark';
   fontSize = 16;
-  visitorName = '';
-  likes = 0;
 
   toggleTheme() {
     this.darkTheme = !this.darkTheme;
     localStorage.setItem('theme', this.darkTheme ? 'dark' : 'light');
-  }
-
-  like() {
-    this.likes++;
   }
 }

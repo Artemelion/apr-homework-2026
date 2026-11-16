@@ -29,3 +29,14 @@ h1 {
 .contacts li {
   margin: 4px 0;
 }
+
+.contacts a {
+  color: #4a7bd0;
+}
+
+@media (max-width: 600px) {
+  .profile {
+    flex-direction: column;
+    text-align: center;
+  }
+}

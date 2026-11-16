@@ -1,36 +1,26 @@
-.skill {
+
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+h3 {
+  font-size: 1em;
+  margin: 0 0 6px;
+}
+
+.tags {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
-.skill-name {
-  width: 170px;
-}
-
-.bar {
-  flex: 1;
-  background: #eee;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.fill {
-  color: white;
-  font-size: 12px;
-  padding: 3px 6px;
-  box-sizing: border-box;
-}
-
-.high {
-  background: #4caf50;
-}
-
-.middle {
-  background: #ff9800;
-}
-
-.low {
-  background: #f44336;
+.tag {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  background: rgba(74, 123, 208, 0.12);
+  border: 1px solid rgba(74, 123, 208, 0.35);
 }

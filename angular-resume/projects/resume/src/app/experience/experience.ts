@@ -3,11 +3,9 @@ import { NgClass } from '@angular/common';
 import { I18n, Tr } from '../i18n';
 
 interface Job {
+  title: Tr;
   company: Tr;
-  position: Tr;
-  period: string;
-  description: Tr;
-  current: boolean;
+  points: Tr[];
 }
 
 // компонент с опытом работы
@@ -22,41 +20,41 @@ export class Experience {
 
   jobs: Job[] = [
     {
-      company: ['IT STEP University', 'IT STEP University', 'IT STEP University'],
-      position: ['Студент, навчальні проекти', 'Студент, учебные проекты', 'Student, study projects'],
-      period: '2024 →',
-      description: [
-        'Сайти на HTML/CSS/JS, Angular і React, програми на C++, бази даних на SQL Server.',
-        'Сайты на HTML/CSS/JS, Angular и React, приложения на C++, базы данных на SQL Server.',
-        'Websites with HTML/CSS/JS, Angular and React, C++ apps, SQL Server databases.',
+      title: ['Технічне адміністрування онлайн-торгівлі', 'Техническое администрирование онлайн-торговли', 'E-commerce technical administration'],
+      company: ['Власна справа · E-commerce', 'Своё дело · E-commerce', 'Own business · E-commerce'],
+      points: [
+        ['SalesDrive CRM, Prom.ua, Rozetka', 'SalesDrive CRM, Prom.ua, Rozetka', 'SalesDrive CRM, Prom.ua, Rozetka'],
+        ['Обробка товарних даних: CSV, XLSX, XML/YML', 'Обработка товарных данных: CSV, XLSX, XML/YML', 'Product data processing: CSV, XLSX, XML/YML'],
+        ['Інтеграції та автоматизація процесів', 'Интеграции и автоматизация процессов', 'Integrations and process automation'],
       ],
-      current: true,
     },
     {
-      company: ['Командний проект', 'Командный проект', 'Team project'],
-      position: ['Weather Forecast', 'Weather Forecast', 'Weather Forecast'],
-      period: '2026',
-      description: [
-        'Сайт прогнозу погоди, робили командою на курсі React.',
-        'Сайт прогноза погоды, делали командой на курсе React.',
-        'Weather forecast website, made as a team during the React course.',
+      title: ['Розробка сайту обліку замовлень', 'Разработка сайта учёта заказов', 'Order management website'],
+      company: ['Drotar · E-commerce', 'Drotar · E-commerce', 'Drotar · E-commerce'],
+      points: [
+        ['Сайт для обліку та обробки замовлень інтернет-магазину', 'Сайт для учёта и обработки заказов интернет-магазина', 'Website for tracking and processing online store orders'],
       ],
-      current: false,
     },
     {
-      company: ['Навчальна практика', 'Учебная практика', 'Study practice'],
-      position: ['Junior C++ Developer', 'Junior C++ Developer', 'Junior C++ Developer'],
-      period: '2026',
-      description: [
-        'Клієнт-серверні програми на сокетах (Winsock), чат, робота з JSON, планувальник задач з патернами.',
-        'Клиент-серверные приложения на сокетах (Winsock), чат, работа с JSON, планировщик задач с паттернами.',
-        'Client-server apps with sockets (Winsock), chat, JSON, task planner with design patterns.',
+      title: ['Розробка лендингів', 'Разработка лендингов', 'Landing page development'],
+      company: ['Фріланс', 'Фриланс', 'Freelance'],
+      points: [
+        ['Верстка та запуск лендингів, адаптивний дизайн', 'Вёрстка и запуск лендингов, адаптивный дизайн', 'Building and launching landing pages, responsive design'],
       ],
-      current: false,
+    },
+    {
+      title: ['Адміністрування IT-інфраструктури', 'Администрирование IT-инфраструктуры', 'IT infrastructure administration'],
+      company: ['Самостійні проекти', 'Самостоятельные проекты', 'Personal projects'],
+      points: [
+        ['Мережа на Ubiquiti UniFi, сегментація через VLAN', 'Сеть на Ubiquiti UniFi, сегментация через VLAN', 'Ubiquiti UniFi network with VLAN segmentation'],
+        ['Сервери віртуалізації Proxmox VE, резервне копіювання', 'Серверы виртуализации Proxmox VE, резервное копирование', 'Proxmox VE virtualization servers, backups'],
+        ['Windows Server 2022 та Linux', 'Windows Server 2022 и Linux', 'Windows Server 2022 and Linux'],
+        ['Віддалений доступ через WireGuard VPN, firewall', 'Удалённый доступ через WireGuard VPN, firewall', 'Remote access via WireGuard VPN, firewall rules'],
+      ],
     },
   ];
 
-  selected = -1;
+  selected = 0;
 
   // event binding: раскрываем описание по клику
   select(index: number) {

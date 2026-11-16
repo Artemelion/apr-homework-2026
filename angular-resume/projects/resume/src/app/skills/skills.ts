@@ -1,45 +1,48 @@
 import { Component, inject } from '@angular/core';
-import { NgClass, NgStyle } from '@angular/common';
-import { I18n, Tr } from '../i18n';
+import { I18n, Tr, same } from '../i18n';
 
-interface Skill {
-  name: string;
-  level: number; // в процентах
+interface Group {
+  title: Tr;
+  items: string[];
 }
 
-// компонент с навыками и сертификатами
+// навыки по группам
 @Component({
   selector: 'app-skills',
-  imports: [NgClass, NgStyle],
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })
 export class Skills {
   i18n = inject(I18n);
 
-  skills: Skill[] = [
-    { name: 'HTML / CSS', level: 85 },
-    { name: 'JavaScript', level: 70 },
-    { name: 'C++', level: 65 },
-    { name: 'SQL (MS SQL Server)', level: 60 },
-    { name: 'TypeScript', level: 55 },
-    { name: 'React', level: 50 },
-    { name: 'Angular', level: 40 },
-    { name: 'C# / .NET', level: 35 },
-    { name: 'Node.js', level: 30 },
+  groups: Group[] = [
+    {
+      title: ['Мережі', 'Сети', 'Networking'],
+      items: ['TCP/IP', 'DHCP', 'DNS', 'NAT', 'VLAN', 'Ubiquiti UniFi', 'WireGuard VPN', 'Firewall'],
+    },
+    {
+      title: ['Сервери та віртуалізація', 'Серверы и виртуализация', 'Servers & virtualization'],
+      items: ['Proxmox VE', 'Proxmox Backup Server', 'VMware', 'LXC', 'Windows Server 2022', 'Ubuntu Server'],
+    },
+    {
+      title: ['Програмування', 'Программирование', 'Programming'],
+      items: ['C / C++', 'C# / .NET', 'Python', 'JavaScript', 'TypeScript', 'SQL'],
+    },
+    {
+      title: same('Web'),
+      items: ['HTML / CSS', 'React', 'Angular', 'Node.js', 'API'],
+    },
+    {
+      title: ['Бази даних', 'Базы данных', 'Databases'],
+      items: ['PostgreSQL', 'MySQL', 'MS SQL Server'],
+    },
+    {
+      title: ['Інструменти', 'Инструменты', 'Tools'],
+      items: ['Git', 'Visual Studio', 'PowerShell', 'Bash'],
+    },
+    {
+      title: same('E-commerce'),
+      items: ['SalesDrive CRM', 'Prom.ua', 'Rozetka', 'CSV / XLSX / XML'],
+    },
   ];
-
-  certificates: Tr[] = [
-    ['IT STEP: Web-розробка (HTML, CSS, JS)', 'IT STEP: Web-разработка (HTML, CSS, JS)', 'IT STEP: Web development (HTML, CSS, JS)'],
-    ['IT STEP: Програмування на C++', 'IT STEP: Программирование на C++', 'IT STEP: C++ programming'],
-  ];
-
-  // ngClass: цвет полоски зависит от уровня
-  levelClass(level: number) {
-    return {
-      high: level >= 70,
-      middle: level >= 50 && level < 70,
-      low: level < 50,
-    };
-  }
 }

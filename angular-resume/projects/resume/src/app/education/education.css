@@ -5,30 +5,4 @@
 
 .spec {
   opacity: 0.8;
-  margin-bottom: 12px;
-}
-
-.groups {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 14px;
-}
-
-h3 {
-  font-size: 1em;
-  margin: 0 0 6px;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tag {
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 0.85em;
-  background: rgba(74, 123, 208, 0.12);
-  border: 1px solid rgba(74, 123, 208, 0.35);
 }
