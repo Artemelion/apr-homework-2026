@@ -1,14 +1,14 @@
 <section>
-  <h2>Опыт работы</h2>
+  <h2>{{ i18n.t('experience') }}</h2>
 
-  @for (job of jobs; track job.company; let i = $index) {
+  @for (job of jobs; track $index; let i = $index) {
     <div class="job" [ngClass]="{ current: job.current, open: selected === i }" (click)="select(i)">
       <div class="job-head">
-        <b>{{ job.position }}</b> - {{ job.company }}
+        <b>{{ i18n.pick(job.position) }}</b> - {{ i18n.pick(job.company) }}
         <span class="period">{{ job.period }}</span>
       </div>
       @if (selected === i) {
-        <p>{{ job.description }}</p>
+        <p>{{ i18n.pick(job.description) }}</p>
       }
     </div>
   }

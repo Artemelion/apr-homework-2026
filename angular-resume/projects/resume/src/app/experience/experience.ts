@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { I18n, Tr } from '../i18n';
 
 interface Job {
-  company: string;
-  position: string;
+  company: Tr;
+  position: Tr;
   period: string;
-  description: string;
+  description: Tr;
   current: boolean;
 }
 
@@ -17,26 +18,40 @@ interface Job {
   styleUrl: './experience.css',
 })
 export class Experience {
+  i18n = inject(I18n);
+
   jobs: Job[] = [
     {
-      company: 'IT Step University',
-      position: 'Студент, учебные проекты',
-      period: '2024 - сейчас',
-      description: 'Сайты на HTML/CSS/JS, приложения на C++ и TypeScript, базы данных на SQL Server.',
+      company: ['IT STEP University', 'IT STEP University', 'IT STEP University'],
+      position: ['Студент, навчальні проекти', 'Студент, учебные проекты', 'Student, study projects'],
+      period: '2024 - 2028',
+      description: [
+        'Сайти на HTML/CSS/JS, Angular і React, програми на C++, бази даних на SQL Server.',
+        'Сайты на HTML/CSS/JS, Angular и React, приложения на C++, базы данных на SQL Server.',
+        'Websites with HTML/CSS/JS, Angular and React, C++ apps, SQL Server databases.',
+      ],
       current: true,
     },
     {
-      company: 'Фриланс',
-      position: 'Верстальщик',
-      period: '2025',
-      description: 'Вёрстка лендингов по макетам, адаптив, Bootstrap.',
+      company: ['Командний проект', 'Командный проект', 'Team project'],
+      position: ['Weather Forecast', 'Weather Forecast', 'Weather Forecast'],
+      period: '2026',
+      description: [
+        'Сайт прогнозу погоди, робили командою на курсі React.',
+        'Сайт прогноза погоды, делали командой на курсе React.',
+        'Weather forecast website, made as a team during the React course.',
+      ],
       current: false,
     },
     {
-      company: 'Учебная практика',
-      position: 'Junior C++ Developer',
+      company: ['Навчальна практика', 'Учебная практика', 'Study practice'],
+      position: ['Junior C++ Developer', 'Junior C++ Developer', 'Junior C++ Developer'],
       period: '2026',
-      description: 'Клиент-серверные приложения на сокетах (Winsock), чат, работа с JSON.',
+      description: [
+        'Клієнт-серверні програми на сокетах (Winsock), чат, робота з JSON, планувальник задач з патернами.',
+        'Клиент-серверные приложения на сокетах (Winsock), чат, работа с JSON, планировщик задач с паттернами.',
+        'Client-server apps with sockets (Winsock), chat, JSON, task planner with design patterns.',
+      ],
       current: false,
     },
   ];

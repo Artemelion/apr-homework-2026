@@ -1,0 +1,47 @@
+<section>
+  <h2>{{ i18n.t('education') }}</h2>
+  <p class="uni"><b>{{ i18n.t('university') }}</b></p>
+  <p class="spec">{{ i18n.t('specialty') }}</p>
+
+  @for (year of years; track year.num) {
+    <div class="year" [ngClass]="year.status">
+      <div class="year-head" (click)="toggle(year.num)">
+        <span>{{ opened === year.num ? '▾' : '▸' }} {{ year.num }} {{ i18n.t('course') }}</span>
+        <span class="period">{{ year.period }}</span>
+        <span class="badge">{{ i18n.t(year.status) }}</span>
+      </div>
+
+      @if (opened === year.num) {
+        <div class="year-body">
+          <div class="col">
+            <h3>{{ i18n.t('subjects') }}</h3>
+            @for (sem of year.semesters; track sem.num) {
+              <p class="sem">{{ sem.num }} {{ i18n.t('semester') }}</p>
+              <ul>
+                @for (s of sem.subjects; track $index) {
+                  <li>{{ i18n.pick(s) }}</li>
+                }
+                @if (sem.electives) {
+                  <li class="muted">+ {{ i18n.t('electives') }} ({{ sem.electives }} {{ i18n.t('credits') }})</li>
+                }
+              </ul>
+            }
+          </div>
+
+          <div class="col">
+            <h3>{{ year.status === 'future' ? i18n.t('programmingPlan') : i18n.t('programming') }}</h3>
+            <ul class="prog">
+              @for (p of year.programming; track $index) {
+                <li>{{ i18n.pick(p) }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <p class="source">
+    {{ i18n.t('source') }}: <a [href]="sourceUrl" target="_blank">itstep.edu.ua</a>
+  </p>
+</section>

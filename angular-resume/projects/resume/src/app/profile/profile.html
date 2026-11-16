@@ -1,19 +1,20 @@
 <section class="profile">
-  <img [src]="photo" [alt]="fullName" class="photo" />
+  <img [src]="photo" [alt]="i18n.t('name')" class="photo" />
 
   <div>
-    <h1>{{ fullName }}</h1>
-    <p class="position">{{ position }}</p>
+    <h1>{{ i18n.t('name') }}</h1>
+    <p class="position">{{ i18n.t('position') }}</p>
 
     <button (click)="toggleContacts()">
-      {{ showContacts ? 'Скрыть контакты' : 'Показать контакты' }}
+      {{ showContacts ? i18n.t('hideContacts') : i18n.t('showContacts') }}
     </button>
 
     @if (showContacts) {
       <ul class="contacts">
-        <li>Телефон: {{ phone }}</li>
+        <li>{{ i18n.t('phone') }}: {{ phone }}</li>
         <li>Email: <a [href]="'mailto:' + email">{{ email }}</a></li>
-        <li>Город: {{ city }}</li>
+        <li>Telegram: <a [href]="telegram" target="_blank">@artyom_morar</a></li>
+        <li>{{ i18n.t('city') }}: {{ i18n.t('cityValue') }}</li>
       </ul>
     }
   </div>

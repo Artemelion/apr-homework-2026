@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { I18n } from '../i18n';
 
 interface Link {
   title: string;
@@ -12,10 +13,12 @@ interface Link {
   styleUrl: './links.css',
 })
 export class Links {
+  i18n = inject(I18n);
+
   links: Link[] = [
     { title: 'GitHub', url: 'https://github.com/Artemelion' },
-    { title: 'LinkedIn', url: 'https://www.linkedin.com/' },
-    { title: 'Twitter', url: 'https://twitter.com/' },
-    { title: 'Сертификаты', url: 'https://mystat.itstep.org/' },
+    { title: 'Telegram', url: 'https://t.me/artyom_morar' },
+    { title: 'Weather Forecast', url: 'https://github.com/Artemelion/Weather-Forecast' },
+    { title: 'IT STEP University', url: 'https://itstep.edu.ua/' },
   ];
 }

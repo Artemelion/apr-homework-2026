@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { I18n } from '../i18n';
 
 // компонент с основной информацией: ФИО, телефон, город, фото
 @Component({
@@ -7,12 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './profile.css',
 })
 export class Profile {
-  fullName = 'Морарь Артем Євгенович';
-  position = 'Junior Web / C++ Developer';
+  i18n = inject(I18n);
+
   phone = '+38 (0XX) XXX-XX-XX';
   email = 'example@gmail.com';
-  city = 'Ваш город';
-  photo = 'photo.svg'; // фото лежит в папке public
+  telegram = 'https://t.me/artyom_morar';
+  photo = 'photo.jpg'; // фото из телеграма, лежит в папке public
   showContacts = true;
 
   // event binding: показать / скрыть контакты

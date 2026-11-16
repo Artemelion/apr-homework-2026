@@ -1,5 +1,5 @@
 .job {
-  border: 1px solid #ddd;
+  border: 1px solid rgba(128, 128, 128, 0.3);
   border-radius: 6px;
   padding: 10px 14px;
   margin-bottom: 8px;
@@ -7,7 +7,7 @@
 }
 
 .job:hover {
-  background: #f7f7f7;
+  background: rgba(128, 128, 128, 0.08);
 }
 
 .job.current {
@@ -15,7 +15,7 @@
 }
 
 .job.open {
-  background: #eef4ff;
+  background: rgba(74, 123, 208, 0.12);
 }
 
 .period {

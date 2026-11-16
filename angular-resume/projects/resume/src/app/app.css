@@ -12,6 +12,7 @@
 }
 
 .toolbar {
+  flex-wrap: wrap;
   max-width: 800px;
   margin: 0 auto 16px;
   display: flex;
@@ -44,4 +45,40 @@ button {
 input[type='text'] {
   padding: 6px;
   margin-right: 8px;
+}
+
+.langs {
+  display: flex;
+  gap: 4px;
+}
+
+.lang {
+  background: transparent;
+  color: inherit;
+  border: 1px solid #4a7bd0;
+}
+
+.lang.active {
+  background: #4a7bd0;
+  color: white;
+}
+
+.theme {
+  margin-left: auto;
+  font-size: 1.3em;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  background: #e3e8f2;
+}
+
+.dark .theme {
+  background: #3a3d45;
+}
+
+.dark input[type='text'] {
+  background: #3a3d45;
+  color: #eee;
+  border: 1px solid #555;
 }

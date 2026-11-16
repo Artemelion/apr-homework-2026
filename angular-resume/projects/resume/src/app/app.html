@@ -1,14 +1,30 @@
 <div class="page" [ngClass]="{ dark: darkTheme }" [ngStyle]="{ 'font-size.px': fontSize }">
   <div class="toolbar">
-    <button (click)="toggleTheme()">{{ darkTheme ? 'Светлая тема' : 'Тёмная тема' }}</button>
+    <div class="langs">
+      @for (l of langs; track l.code) {
+        <button class="lang" [ngClass]="{ active: i18n.lang() === l.code }" (click)="i18n.setLang(l.code)">
+          {{ l.title }}
+        </button>
+      }
+    </div>
+
     <label>
-      Размер шрифта: {{ fontSize }}px
+      {{ i18n.t('fontSize') }}: {{ fontSize }}px
       <input type="range" min="12" max="22" [(ngModel)]="fontSize" />
     </label>
+
+    <!-- солнышко в тёмной теме, луна в светлой -->
+    <button class="theme" (click)="toggleTheme()" [title]="darkTheme ? i18n.t('toLight') : i18n.t('toDark')">
+      {{ darkTheme ? '☀️' : '🌙' }}
+    </button>
   </div>
 
   <div class="card">
     <app-profile />
+  </div>
+
+  <div class="card">
+    <app-education />
   </div>
 
   <div class="card">
@@ -24,11 +40,11 @@
   </div>
 
   <div class="card">
-    <h2>Оставьте отзыв</h2>
-    <input type="text" placeholder="Ваше имя" [(ngModel)]="visitorName" />
+    <h2>{{ i18n.t('feedback') }}</h2>
+    <input type="text" [placeholder]="i18n.t('yourName')" [(ngModel)]="visitorName" />
     <button (click)="like()">👍 {{ likes }}</button>
     @if (visitorName) {
-      <p>Спасибо, {{ visitorName }}, что посмотрели моё резюме!</p>
+      <p>{{ i18n.t('thanks').replace('{name}', visitorName) }}</p>
     }
   </div>
 </div>

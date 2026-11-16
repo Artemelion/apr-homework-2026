@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgClass, NgStyle } from '@angular/common';
+import { I18n, Tr } from '../i18n';
 
 interface Skill {
   name: string;
@@ -14,18 +15,33 @@ interface Skill {
   styleUrl: './skills.css',
 })
 export class Skills {
+  i18n = inject(I18n);
+
   skills: Skill[] = [
     { name: 'HTML / CSS', level: 85 },
     { name: 'JavaScript', level: 70 },
-    { name: 'TypeScript', level: 55 },
-    { name: 'Angular', level: 35 },
     { name: 'C++', level: 65 },
     { name: 'SQL (MS SQL Server)', level: 60 },
+    { name: 'TypeScript', level: 55 },
+    { name: 'React', level: 50 },
+    { name: 'Angular', level: 40 },
+    { name: 'C# / .NET', level: 35 },
+    { name: 'Node.js', level: 30 },
   ];
 
-  knowledge: string[] = ['ООП и SOLID', 'Паттерны проектирования', 'UML диаграммы', 'Git / GitHub', 'Сокеты, TCP/UDP'];
+  knowledge: Tr[] = [
+    ['ООП і SOLID', 'ООП и SOLID', 'OOP and SOLID'],
+    ['Патерни проектування', 'Паттерны проектирования', 'Design patterns'],
+    ['UML діаграми', 'UML диаграммы', 'UML diagrams'],
+    ['Git / GitHub', 'Git / GitHub', 'Git / GitHub'],
+    ['Сокети, TCP/UDP', 'Сокеты, TCP/UDP', 'Sockets, TCP/UDP'],
+    ['Бази даних, нормальні форми', 'Базы данных, нормальные формы', 'Databases, normal forms'],
+  ];
 
-  certificates: string[] = ['IT Step: Web-разработка (HTML, CSS, JS)', 'IT Step: Программирование на C++'];
+  certificates: Tr[] = [
+    ['IT STEP: Web-розробка (HTML, CSS, JS)', 'IT STEP: Web-разработка (HTML, CSS, JS)', 'IT STEP: Web development (HTML, CSS, JS)'],
+    ['IT STEP: Програмування на C++', 'IT STEP: Программирование на C++', 'IT STEP: C++ programming'],
+  ];
 
   // ngClass: цвет полоски зависит от уровня
   levelClass(level: number) {
