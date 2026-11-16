@@ -1,4 +1,4 @@
-<div class="page" [ngClass]="{ dark: darkTheme }" [ngStyle]="{ 'font-size.px': fontSize }">
+<div class="page" [ngClass]="{ dark: darkTheme }">
   <div class="toolbar">
     <div class="langs">
       @for (l of langs; track l.code) {
@@ -7,11 +7,6 @@
         </button>
       }
     </div>
-
-    <label>
-      {{ i18n.t('fontSize') }}: {{ fontSize }}px
-      <input type="range" min="12" max="22" [(ngModel)]="fontSize" />
-    </label>
 
     <!-- солнышко в тёмной теме, луна в светлой -->
     <button class="theme" (click)="toggleTheme()" [title]="darkTheme ? i18n.t('toLight') : i18n.t('toDark')">

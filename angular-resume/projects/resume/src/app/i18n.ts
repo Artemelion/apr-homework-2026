@@ -9,35 +9,36 @@ export type Tr = [string, string, string];
 export const same = (s: string): Tr => [s, s, s];
 
 const texts: Record<string, Tr> = {
-  fontSize: ['Розмір шрифту', 'Размер шрифта', 'Font size'],
   toLight: ['Світла тема', 'Светлая тема', 'Light theme'],
   toDark: ['Темна тема', 'Тёмная тема', 'Dark theme'],
 
   name: ['Морарь Артем', 'Морарь Артём', 'Artem Morar'],
-  headline: [
-    'IT-адміністратор і розробник · Мережі, сервери, Web',
-    'IT-администратор и разработчик · Сети, серверы, Web',
-    'IT Administrator & Developer · Networks, Servers, Web',
-  ],
+  headline: ['Системний адміністратор, .NET розробник', 'Системный администратор, .NET разработчик', 'System administrator, .NET developer'],
   showContacts: ['Показати контакти', 'Показать контакты', 'Show contacts'],
   hideContacts: ['Сховати контакти', 'Скрыть контакты', 'Hide contacts'],
   phone: ['Телефон', 'Телефон', 'Phone'],
 
   about: ['Про мене', 'Обо мне', 'About'],
   aboutText: [
-    "Налаштовую мережі та сервери (Ubiquiti UniFi, Proxmox, Windows Server, Linux), розробляю сайти та e-commerce рішення. Вмію зібрати й продіагностувати ПК, автоматизую рутину скриптами.",
-    'Настраиваю сети и серверы (Ubiquiti UniFi, Proxmox, Windows Server, Linux), разрабатываю сайты и e-commerce решения. Умею собрать и продиагностировать ПК, автоматизирую рутину скриптами.',
-    'I set up networks and servers (Ubiquiti UniFi, Proxmox, Windows Server, Linux) and build websites and e-commerce solutions. I can assemble and troubleshoot PCs and automate routine tasks with scripts.',
+    "Займаюсь мережами, серверами і розробкою. Вдома сам підняв інфраструктуру на UniFi і Proxmox, веду технічну частину свого інтернет-магазину і пишу для нього софт на .NET. Вчусь в IT STEP University на комп'ютерних науках.",
+    'Занимаюсь сетями, серверами и разработкой. Дома сам поднял инфраструктуру на UniFi и Proxmox, веду техническую часть своего интернет-магазина и пишу для него софт на .NET. Учусь в IT STEP University на компьютерных науках.',
+    "I work with networks, servers and software. I built my own home infrastructure on UniFi and Proxmox, run the technical side of my online store and write software for it in .NET. Studying Computer Science at IT STEP University.",
   ],
 
   experience: ['Досвід', 'Опыт', 'Experience'],
   skills: ['Навички', 'Навыки', 'Skills'],
+  zoomHint: [
+    'Колесо миші - наблизити / віддалити, перетягніть пусте місце щоб рухати',
+    'Колесо мыши - приблизить / отдалить, тяните пустое место чтобы двигать',
+    'Mouse wheel to zoom in / out, drag empty space to move',
+  ],
+  reset: ['Скинути', 'Сбросить', 'Reset'],
   education: ['Освіта', 'Образование', 'Education'],
   university: ['IT STEP University', 'IT STEP University', 'IT STEP University'],
   specialty: [
-    "Бакалавр, 122 «Комп'ютерні науки», з 2024",
-    'Бакалавр, 122 «Компьютерные науки», с 2024',
-    'Bachelor of Computer Science (122), since 2024',
+    "Бакалавр, 122 Комп'ютерні науки",
+    'Бакалавр, 122 Компьютерные науки',
+    'Bachelor, 122 Computer Science',
   ],
   certificates: ['Сертифікати', 'Сертификаты', 'Certificates'],
   links: ['Посилання', 'Ссылки', 'Links'],

@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { NgClass, NgStyle } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
 import { Profile } from './profile/profile';
 import { Education } from './education/education';
 import { Experience } from './experience/experience';
@@ -10,7 +9,7 @@ import { I18n, Lang } from './i18n';
 
 @Component({
   selector: 'app-root',
-  imports: [NgClass, NgStyle, FormsModule, Profile, Education, Experience, Skills, Links],
+  imports: [NgClass, Profile, Education, Experience, Skills, Links],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -25,7 +24,6 @@ export class App {
 
   // тему запоминаем, чтобы после перезагрузки не сбрасывалась
   darkTheme = localStorage.getItem('theme') === 'dark';
-  fontSize = 16;
 
   toggleTheme() {
     this.darkTheme = !this.darkTheme;

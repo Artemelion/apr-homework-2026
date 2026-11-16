@@ -2,12 +2,12 @@
   <h2>{{ i18n.t('experience') }}</h2>
 
   @for (job of jobs; track $index; let i = $index) {
-    <div class="job" [ngClass]="{ open: selected === i }" (click)="select(i)">
+    <div class="job" [ngClass]="{ open: opened.has(i) }" (click)="toggle(i)">
       <div class="job-head">
         <b>{{ i18n.pick(job.title) }}</b>
         <div class="company">{{ i18n.pick(job.company) }}</div>
       </div>
-      @if (selected === i) {
+      @if (opened.has(i)) {
         <ul>
           @for (p of job.points; track $index) {
             <li>{{ i18n.pick(p) }}</li>

@@ -10,3 +10,24 @@
 .certs {
   margin-top: 16px;
 }
+
+.certs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.certs li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.certs li:last-child {
+  border-bottom: none;
+}
+
+.issuer {
+  display: block;
+  font-size: 0.9em;
+  opacity: 0.7;
+}

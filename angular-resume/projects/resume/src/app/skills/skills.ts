@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild, inject } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 import { I18n, Tr, same } from '../i18n';
 
 interface Group {
   title: Tr;
-  items: string[];
+  items: (string | Tr)[];
 }
 
 interface GNode {
@@ -23,10 +23,18 @@ interface GLink {
   len: number;
 }
 
-// навыки в виде графа как в Obsidian: узлы, связи, подсветка соседей при наведении
+interface View {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+// навыки в виде графа как в Obsidian: узлы, связи, подсветка соседей,
+// колесо мыши - масштаб, перетаскивание пустого места - сдвиг, узлы тоже можно таскать
 @Component({
   selector: 'app-skills',
-  imports: [NgClass],
+  imports: [NgClass, NgStyle],
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })
@@ -38,47 +46,89 @@ export class Skills implements OnDestroy {
 
   groups: Group[] = [
     {
-      title: ['Мережі', 'Сети', 'Networking'],
-      items: ['TCP/IP', 'DHCP', 'DNS', 'NAT', 'VLAN', 'Ubiquiti UniFi', 'WireGuard VPN', 'Firewall'],
+      title: ['Операційні системи', 'Операционные системы', 'Operating systems'],
+      items: ['Windows 10/11', 'Windows Server 2022', 'Ubuntu Server LTS', 'Linux', 'PowerShell', 'CMD', 'Bash'],
     },
     {
-      title: ['Сервери', 'Серверы', 'Servers'],
-      items: ['Proxmox VE', 'Proxmox Backup', 'VMware', 'LXC', 'Windows Server', 'Ubuntu Server'],
+      title: ['Мережі', 'Сети', 'Networking'],
+      items: [
+        'TCP/IP', 'DHCP', 'DNS', 'NAT', 'VLAN',
+        'UniFi Gateway', 'UniFi Switch', 'UniFi Access Point',
+        'WireGuard VPN', 'Firewall',
+        ['Маршрутизація', 'Маршрутизация', 'Routing'],
+        'Wi-Fi WPA2/WPA3',
+        ['Сегментація мереж', 'Сегментация сетей', 'Network segmentation'],
+        ['Діагностика мережі', 'Диагностика сети', 'Network troubleshooting'],
+      ],
+    },
+    {
+      title: ['Сервери та віртуалізація', 'Серверы и виртуализация', 'Servers & virtualization'],
+      items: [
+        'Proxmox VE', 'Proxmox Backup Server', 'VMware', 'VirtualBox',
+        ['Віртуальні машини', 'Виртуальные машины', 'Virtual machines'],
+        ['LXC-контейнери', 'LXC-контейнеры', 'LXC containers'],
+        ['Бекапи та відновлення', 'Бэкапы и восстановление', 'Backup & recovery'],
+        ['Віддалене адміністрування', 'Удалённое администрирование', 'Remote administration'],
+      ],
+    },
+    {
+      title: ['Обладнання', 'Железо', 'Hardware'],
+      items: [
+        ['Складання ПК', 'Сборка ПК', 'PC building'],
+        ['Модернізація ПК', 'Апгрейд ПК', 'PC upgrades'],
+        ['Діагностика несправностей', 'Диагностика неисправностей', 'Hardware diagnostics'],
+        ['Встановлення ОС і драйверів', 'Установка ОС и драйверов', 'OS & driver setup'],
+        ['Накопичувачі, RAM, БЖ', 'Накопители, RAM, БП', 'Drives, RAM, PSU'],
+        ['Периферія', 'Периферия', 'Peripherals'],
+      ],
     },
     {
       title: ['Програмування', 'Программирование', 'Programming'],
-      items: ['C / C++', 'C# / .NET', 'Python', 'JavaScript', 'TypeScript'],
+      items: ['C', 'C++', 'C#', 'Python', 'JavaScript', 'TypeScript', ['Скрипти автоматизації', 'Скрипты автоматизации', 'Automation scripts']],
     },
     {
-      title: same('Web'),
-      items: ['HTML / CSS', 'React', 'Angular', 'Node.js', 'API'],
+      title: same('.NET'),
+      items: ['ASP.NET Core', 'Entity Framework Core', 'Blazor', 'SignalR', 'ASP.NET Identity', 'Azure', 'Visual Studio'],
     },
     {
       title: ['Бази даних', 'Базы данных', 'Databases'],
       items: ['SQL', 'PostgreSQL', 'MySQL', 'MS SQL Server'],
     },
     {
+      title: same('Web'),
+      items: ['HTML / CSS', 'React', 'Angular', 'Node.js', 'REST API', ['API-інтеграції', 'API-интеграции', 'API integrations']],
+    },
+    {
       title: ['Інструменти', 'Инструменты', 'Tools'],
-      items: ['Git', 'Visual Studio', 'PowerShell', 'Bash'],
+      items: ['Git', 'GitHub Actions'],
     },
     {
       title: same('E-commerce'),
-      items: ['SalesDrive CRM', 'Prom.ua', 'Rozetka', 'CSV / XLSX / XML'],
+      items: ['SalesDrive CRM', 'Prom.ua', 'Rozetka', ['API Нової пошти', 'API Новой почты', 'Nova Poshta API'], 'CSV / XLSX', 'XML / YML', 'Telegram Bot API'],
     },
   ];
 
-  // дополнительные связи между навыками из разных групп, чтобы граф был "живой"
+  // связи между навыками из разных групп, чтобы граф был "живой"
   extra: [string, string][] = [
     ['TypeScript', 'Angular'],
     ['JavaScript', 'React'],
     ['JavaScript', 'Node.js'],
-    ['C# / .NET', 'Visual Studio'],
-    ['Ubuntu Server', 'Bash'],
-    ['Windows Server', 'PowerShell'],
-    ['Python', 'CSV / XLSX / XML'],
-    ['API', 'SalesDrive CRM'],
+    ['C#', 'ASP.NET Core'],
+    ['Visual Studio', 'C#'],
+    ['Entity Framework Core', 'MS SQL Server'],
+    ['Azure', 'GitHub Actions'],
+    ['Ubuntu Server LTS', 'Bash'],
+    ['Windows Server 2022', 'PowerShell'],
+    ['Python', 'XML / YML'],
+    ['Python', 'CSV / XLSX'],
+    ['REST API', 'SalesDrive CRM'],
+    ['REST API', 'ASP.NET Core'],
     ['Firewall', 'Proxmox VE'],
-    ['SQL', 'C# / .NET'],
+    ['VLAN', 'Proxmox VE'],
+    ['WireGuard VPN', 'Віддалене адміністрування'],
+    ['Linux', 'Ubuntu Server LTS'],
+    ['Linux', 'LXC-контейнери'],
+    ['Встановлення ОС і драйверів', 'Windows 10/11'],
   ];
 
   nodes: GNode[] = [];
@@ -87,7 +137,11 @@ export class Skills implements OnDestroy {
 
   hovered: string | null = null;
   dragged: GNode | null = null;
-  viewBox = '0 0 800 500';
+  overGraph = false;
+
+  private base: View = { x: 0, y: 0, w: 800, h: 500 };
+  view: View = { ...this.base };
+  private panStart: { cx: number; cy: number; view: View } | null = null;
   private frame = 0;
   private energy = 0;
 
@@ -95,25 +149,35 @@ export class Skills implements OnDestroy {
     const center = this.addNode('me', ['Я', 'Я', 'Me'], 'center', 0, 0);
     this.groups.forEach((g, gi) => {
       const angle = (gi / this.groups.length) * Math.PI * 2;
-      const gx = Math.cos(angle) * 150;
-      const gy = Math.sin(angle) * 150;
+      const gx = Math.cos(angle) * 220;
+      const gy = Math.sin(angle) * 220;
       const group = this.addNode('g' + gi, g.title, 'group', gx, gy);
-      this.addLink(center, group, 120);
+      this.addLink(center, group, 170);
       g.items.forEach((item, i) => {
-        const a = angle + (i - g.items.length / 2) * 0.25;
-        const skill = this.addNode(item, same(item), 'skill', gx + Math.cos(a) * 80, gy + Math.sin(a) * 80);
-        this.addLink(group, skill, 60);
+        const label = typeof item === 'string' ? same(item) : item;
+        const a = angle + (i - g.items.length / 2) * 0.3;
+        const skill = this.addNode(label[0], label, 'skill', gx + Math.cos(a) * 90, gy + Math.sin(a) * 90);
+        this.addLink(group, skill, 70);
       });
     });
     for (const [a, b] of this.extra) {
       const na = this.nodes.find((n) => n.id === a);
       const nb = this.nodes.find((n) => n.id === b);
-      if (na && nb) this.addLink(na, nb, 140);
+      if (na && nb) this.addLink(na, nb, 160);
     }
 
     // раскладываем граф заранее, чтобы он сразу был красивый
-    for (let i = 0; i < 400; i++) this.tick(1);
+    for (let i = 0; i < 500; i++) this.tick(1);
     this.fit();
+  }
+
+  get viewBox() {
+    const v = this.view;
+    return `${v.x} ${v.y} ${v.w} ${v.h}`;
+  }
+
+  get zoom() {
+    return Math.round((this.base.w / this.view.w) * 100);
   }
 
   private addNode(id: string, label: Tr, type: GNode['type'], x: number, y: number) {
@@ -137,7 +201,7 @@ export class Skills implements OnDestroy {
         const dx = n[j].x - n[i].x;
         const dy = n[j].y - n[i].y;
         const d2 = dx * dx + dy * dy + 0.01;
-        const f = (1200 / d2) * alpha;
+        const f = (1500 / d2) * alpha;
         const d = Math.sqrt(d2);
         n[i].vx -= (dx / d) * f;
         n[i].vy -= (dy / d) * f;
@@ -157,8 +221,8 @@ export class Skills implements OnDestroy {
     }
     for (const node of n) {
       // лёгкое притяжение к центру
-      node.vx -= node.x * 0.005 * alpha;
-      node.vy -= node.y * 0.005 * alpha;
+      node.vx -= node.x * 0.004 * alpha;
+      node.vy -= node.y * 0.004 * alpha;
       if (node === this.dragged) {
         node.vx = node.vy = 0;
         continue;
@@ -170,19 +234,18 @@ export class Skills implements OnDestroy {
     }
   }
 
-  // подгоняем viewBox под размер графа
+  // подгоняем видимую область под размер графа
   private fit() {
     const xs = this.nodes.map((n) => n.x);
     const ys = this.nodes.map((n) => n.y);
-    const pad = 50;
-    const minX = Math.min(...xs) - pad;
-    const minY = Math.min(...ys) - pad;
-    const w = Math.max(...xs) - minX + pad;
-    const h = Math.max(...ys) - minY + pad;
-    this.viewBox = `${minX} ${minY} ${w} ${h}`;
+    const pad = 60;
+    const x = Math.min(...xs) - pad;
+    const y = Math.min(...ys) - pad;
+    this.base = { x, y, w: Math.max(...xs) - x + pad, h: Math.max(...ys) - y + pad };
+    this.view = { ...this.base };
   }
 
-  // анимация после перетаскивания, пока граф не успокоится
+  // анимация после перетаскивания узла, пока граф не успокоится
   private animate() {
     cancelAnimationFrame(this.frame);
     const step = () => {
@@ -193,9 +256,15 @@ export class Skills implements OnDestroy {
     this.frame = requestAnimationFrame(step);
   }
 
+  // координаты мыши в системе координат svg
+  private toSvg(event: MouseEvent) {
+    const svg = this.svg.nativeElement;
+    return new DOMPoint(event.clientX, event.clientY).matrixTransform(svg.getScreenCTM()!.inverse());
+  }
+
   radius(n: GNode) {
-    if (n.type === 'center') return 14;
-    if (n.type === 'group') return 9;
+    if (n.type === 'center') return 16;
+    if (n.type === 'group') return 10;
     return 5;
   }
 
@@ -207,22 +276,56 @@ export class Skills implements OnDestroy {
     return this.hovered === l.a.id || this.hovered === l.b.id;
   }
 
-  // перетаскивание узлов мышкой
+  // масштаб колесом относительно курсора
+  onWheel(event: WheelEvent) {
+    event.preventDefault();
+    this.zoomAt(this.toSvg(event), event.deltaY > 0 ? 1.15 : 1 / 1.15);
+  }
+
+  zoomBy(factor: number) {
+    const v = this.view;
+    this.zoomAt({ x: v.x + v.w / 2, y: v.y + v.h / 2 }, factor);
+  }
+
+  private zoomAt(p: { x: number; y: number }, factor: number) {
+    const v = this.view;
+    const w = Math.min(this.base.w * 1.5, Math.max(this.base.w / 6, v.w * factor));
+    const k = w / v.w;
+    this.view = { x: p.x - (p.x - v.x) * k, y: p.y - (p.y - v.y) * k, w, h: v.h * k };
+  }
+
+  resetView() {
+    this.view = { ...this.base };
+  }
+
+  // перетаскивание узла
   startDrag(event: PointerEvent, node: GNode) {
+    event.stopPropagation();
     this.dragged = node;
-    (event.target as Element).setPointerCapture(event.pointerId);
+    this.svg.nativeElement.setPointerCapture(event.pointerId);
     this.animate();
   }
 
+  // перетаскивание пустого места - сдвиг графа
+  startPan(event: PointerEvent) {
+    this.panStart = { cx: event.clientX, cy: event.clientY, view: { ...this.view } };
+    this.svg.nativeElement.setPointerCapture(event.pointerId);
+  }
+
   onMove(event: PointerEvent) {
-    if (!this.dragged) return;
-    const svg = this.svg.nativeElement;
-    const pt = new DOMPoint(event.clientX, event.clientY).matrixTransform(svg.getScreenCTM()!.inverse());
-    this.dragged.x = pt.x;
-    this.dragged.y = pt.y;
+    if (this.dragged) {
+      const p = this.toSvg(event);
+      this.dragged.x = p.x;
+      this.dragged.y = p.y;
+    } else if (this.panStart) {
+      const s = this.panStart;
+      const k = s.view.w / this.svg.nativeElement.clientWidth;
+      this.view = { ...s.view, x: s.view.x - (event.clientX - s.cx) * k, y: s.view.y - (event.clientY - s.cy) * k };
+    }
   }
 
   endDrag() {
+    this.panStart = null;
     if (!this.dragged) return;
     this.dragged = null;
     this.energy = 90;

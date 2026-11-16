@@ -2,12 +2,17 @@
   <h2>{{ i18n.t('education') }}</h2>
   <p class="uni"><b>{{ i18n.t('university') }}</b></p>
   <p class="spec">{{ i18n.t('specialty') }}</p>
+  <p class="spec">{{ years }}</p>
 </section>
 
 <section class="certs">
   <h2>{{ i18n.t('certificates') }}</h2>
-  @for (c of certificates; track c.name) {
-    <p class="uni"><b>{{ c.name }}</b></p>
-    <p class="spec">{{ c.issuer }}</p>
-  }
+  <ul>
+    @for (c of certificates; track c.name) {
+      <li>
+        <b>{{ c.name }}</b>
+        <span class="issuer">{{ c.issuer }}</span>
+      </li>
+    }
+  </ul>
 </section>
