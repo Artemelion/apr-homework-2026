@@ -57,12 +57,11 @@ export class Experience {
     },
   ];
 
-  // какие пункты раскрыты, сначала всё свёрнуто
-  opened = new Set<number>();
+  // открыт может быть только один пункт, сначала всё свёрнуто
+  opened = -1;
 
-  // event binding: сворачиваем / раскрываем по клику
+  // event binding: раскрываем по клику, остальные закрываются
   toggle(index: number) {
-    if (this.opened.has(index)) this.opened.delete(index);
-    else this.opened.add(index);
+    this.opened = this.opened === index ? -1 : index;
   }
 }

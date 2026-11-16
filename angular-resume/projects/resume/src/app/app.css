@@ -13,7 +13,7 @@
 
 .toolbar {
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto 16px;
   display: flex;
   gap: 20px;
@@ -21,7 +21,7 @@
 }
 
 .card {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto 16px;
   padding: 20px;
   background: white;
@@ -81,4 +81,24 @@ input[type='text'] {
   background: #3a3d45;
   color: #eee;
   border: 1px solid #555;
+}
+
+/* две карточки рядом, на телефоне друг под другом */
+.row {
+  max-width: 1000px;
+  margin: 0 auto 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.row .card {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
 }

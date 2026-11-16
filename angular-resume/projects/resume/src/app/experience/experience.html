@@ -2,7 +2,7 @@
   <h2>{{ i18n.t('experience') }}</h2>
 
   @for (job of jobs; track $index; let i = $index) {
-    <div class="job" [ngClass]="{ open: opened.has(i) }" (click)="toggle(i)">
+    <div class="job" [ngClass]="{ open: opened === i }" (click)="toggle(i)">
       <div class="job-head">
         <div>
           <b>{{ i18n.pick(job.title) }}</b>
@@ -11,7 +11,7 @@
         <!-- стрелочка: вниз - свёрнуто, вверх - раскрыто -->
         <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
       </div>
-      @if (opened.has(i)) {
+      @if (opened === i) {
         <ul>
           @for (p of job.points; track $index) {
             <li>{{ i18n.pick(p) }}</li>

@@ -1,0 +1,33 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+a {
+  color: #4a7bd0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.desc,
+.stack {
+  display: block;
+  font-size: 0.9em;
+}
+
+.stack {
+  opacity: 0.6;
+}

@@ -4,11 +4,12 @@ import { Profile } from './profile/profile';
 import { Education } from './education/education';
 import { Experience } from './experience/experience';
 import { Skills } from './skills/skills';
+import { Projects } from './projects/projects';
 import { I18n, Lang } from './i18n';
 
 @Component({
   selector: 'app-root',
-  imports: [NgClass, Profile, Education, Experience, Skills],
+  imports: [NgClass, Profile, Education, Experience, Skills, Projects],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

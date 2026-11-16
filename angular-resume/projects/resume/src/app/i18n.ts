@@ -35,6 +35,7 @@ const texts: Record<string, Tr> = {
     'Бакалавр, 122 Компьютерные науки',
     'Bachelor, 122 Computer Science',
   ],
+  projects: ['Проекти', 'Проекты', 'Projects'],
   certificates: ['Сертифікати', 'Сертификаты', 'Certificates'],
   showAll: ['Показати всі', 'Показать все', 'Show all'],
   showLess: ['Згорнути', 'Свернуть', 'Show less'],
