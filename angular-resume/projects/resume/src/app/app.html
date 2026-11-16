@@ -1,0 +1,34 @@
+<div class="page" [ngClass]="{ dark: darkTheme }" [ngStyle]="{ 'font-size.px': fontSize }">
+  <div class="toolbar">
+    <button (click)="toggleTheme()">{{ darkTheme ? 'Светлая тема' : 'Тёмная тема' }}</button>
+    <label>
+      Размер шрифта: {{ fontSize }}px
+      <input type="range" min="12" max="22" [(ngModel)]="fontSize" />
+    </label>
+  </div>
+
+  <div class="card">
+    <app-profile />
+  </div>
+
+  <div class="card">
+    <app-experience />
+  </div>
+
+  <div class="card">
+    <app-skills />
+  </div>
+
+  <div class="card">
+    <app-links />
+  </div>
+
+  <div class="card">
+    <h2>Оставьте отзыв</h2>
+    <input type="text" placeholder="Ваше имя" [(ngModel)]="visitorName" />
+    <button (click)="like()">👍 {{ likes }}</button>
+    @if (visitorName) {
+      <p>Спасибо, {{ visitorName }}, что посмотрели моё резюме!</p>
+    }
+  </div>
+</div>

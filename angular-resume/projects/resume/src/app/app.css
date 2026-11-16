@@ -1,0 +1,47 @@
+.page {
+  min-height: 100vh;
+  padding: 20px;
+  background: #f2f4f8;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+
+.page.dark {
+  background: #1e1f24;
+  color: #eee;
+}
+
+.toolbar {
+  max-width: 800px;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.card {
+  max-width: 800px;
+  margin: 0 auto 16px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .card {
+  background: #2b2d33;
+}
+
+button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #4a7bd0;
+  color: white;
+  cursor: pointer;
+}
+
+input[type='text'] {
+  padding: 6px;
+  margin-right: 8px;
+}
