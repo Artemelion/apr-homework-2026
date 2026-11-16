@@ -24,7 +24,7 @@ export class Experience {
     {
       company: ['IT STEP University', 'IT STEP University', 'IT STEP University'],
       position: ['Студент, навчальні проекти', 'Студент, учебные проекты', 'Student, study projects'],
-      period: '2024 - 2028',
+      period: '2024 →',
       description: [
         'Сайти на HTML/CSS/JS, Angular і React, програми на C++, бази даних на SQL Server.',
         'Сайты на HTML/CSS/JS, Angular и React, приложения на C++, базы данных на SQL Server.',

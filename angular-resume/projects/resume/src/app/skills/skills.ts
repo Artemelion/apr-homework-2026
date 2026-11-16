@@ -7,7 +7,7 @@ interface Skill {
   level: number; // в процентах
 }
 
-// компонент с навыками, знаниями и сертификатами
+// компонент с навыками и сертификатами
 @Component({
   selector: 'app-skills',
   imports: [NgClass, NgStyle],
@@ -27,15 +27,6 @@ export class Skills {
     { name: 'Angular', level: 40 },
     { name: 'C# / .NET', level: 35 },
     { name: 'Node.js', level: 30 },
-  ];
-
-  knowledge: Tr[] = [
-    ['ООП і SOLID', 'ООП и SOLID', 'OOP and SOLID'],
-    ['Патерни проектування', 'Паттерны проектирования', 'Design patterns'],
-    ['UML діаграми', 'UML диаграммы', 'UML diagrams'],
-    ['Git / GitHub', 'Git / GitHub', 'Git / GitHub'],
-    ['Сокети, TCP/UDP', 'Сокеты, TCP/UDP', 'Sockets, TCP/UDP'],
-    ['Бази даних, нормальні форми', 'Базы данных, нормальные формы', 'Databases, normal forms'],
   ];
 
   certificates: Tr[] = [
