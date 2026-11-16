@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="220" viewBox="0 0 300 220">
+  <rect width="300" height="220" fill="#ffe0b2"/>
+  <circle cx="150" cy="80" r="40" fill="#f1c27d"/>
+  <path d="M110 70 Q150 20 190 70 Q170 50 150 52 Q130 50 110 70 Z" fill="#6d4c41"/>
+  <circle cx="137" cy="82" r="4" fill="#3e2723"/>
+  <circle cx="163" cy="82" r="4" fill="#3e2723"/>
+  <path d="M138 100 Q150 110 162 100" stroke="#3e2723" stroke-width="3" fill="none"/>
+  <path d="M80 220 Q90 140 150 135 Q210 140 220 220 Z" fill="#1e88e5"/>
+  <text x="150" y="210" font-size="16" text-anchor="middle" fill="#ffffff" font-family="Arial">Phil Shaw</text>
+</svg>
