@@ -1,21 +1,21 @@
 .page {
   min-height: 100vh;
   padding: 20px;
-  background: #f2f4f8;
+  background: #f2f6f3;
   color: #222;
   transition: background 0.3s, color 0.3s;
 }
 
 .page.dark {
-  background: #1e1f24;
+  background: #1b201d;
   color: #eee;
 }
 
 .toolbar {
-  flex-wrap: wrap;
   max-width: 1000px;
   margin: 0 auto 16px;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   align-items: center;
 }
@@ -25,41 +25,27 @@
   margin: 0 auto 16px;
   padding: 20px;
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 }
 
 .dark .card {
-  background: #2b2d33;
-}
-
-button {
-  padding: 6px 14px;
-  border: none;
-  border-radius: 4px;
-  background: #4a7bd0;
-  color: white;
-  cursor: pointer;
-}
-
-input[type='text'] {
-  padding: 6px;
-  margin-right: 8px;
+  background: #252b27;
 }
 
 .langs {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
 .lang {
-  background: transparent;
-  color: inherit;
-  border: 1px solid #4a7bd0;
+  min-width: 46px;
 }
 
 .lang.active {
-  background: #4a7bd0;
+  background: var(--green);
+  border-color: var(--green);
   color: white;
 }
 
@@ -70,35 +56,4 @@ input[type='text'] {
   height: 42px;
   padding: 0;
   border-radius: 50%;
-  background: #e3e8f2;
-}
-
-.dark .theme {
-  background: #3a3d45;
-}
-
-.dark input[type='text'] {
-  background: #3a3d45;
-  color: #eee;
-  border: 1px solid #555;
-}
-
-/* две карточки рядом, на телефоне друг под другом */
-.row {
-  max-width: 1000px;
-  margin: 0 auto 16px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-items: start;
-}
-
-.row .card {
-  margin: 0;
-}
-
-@media (max-width: 760px) {
-  .row {
-    grid-template-columns: 1fr;
-  }
 }

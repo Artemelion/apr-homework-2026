@@ -9,7 +9,7 @@
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #4a7bd0;
+  border: 3px solid var(--green);
 }
 
 h1 {
@@ -28,10 +28,6 @@ h1 {
 
 .contacts li {
   margin: 4px 0;
-}
-
-.contacts a {
-  color: #4a7bd0;
 }
 
 @media (max-width: 600px) {

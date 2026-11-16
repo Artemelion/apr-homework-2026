@@ -1,0 +1,25 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.issuer {
+  display: block;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.more {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  cursor: pointer;
+  color: var(--green-text);
+}

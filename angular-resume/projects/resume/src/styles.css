@@ -1,17 +1,40 @@
+/* зелёная палитра для всего резюме */
+:root {
+  --green: #3f9f6b;
+  --green-text: #2e7d52;
+  --green-soft: rgba(63, 159, 107, 0.12);
+  --green-border: rgba(63, 159, 107, 0.4);
+}
+
+.dark {
+  --green-text: #8fd6ad;
+  --green-soft: rgba(63, 159, 107, 0.18);
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* общий вид кнопок для всех компонентов */
+/* кнопки мягкие, светло-зелёные */
 button {
-  padding: 6px 14px;
-  border: none;
-  border-radius: 4px;
-  background: #4a7bd0;
-  color: white;
+  padding: 6px 16px;
+  border: 1px solid var(--green-border);
+  border-radius: 20px;
+  background: var(--green-soft);
+  color: var(--green-text);
   font: inherit;
+  font-size: 0.9em;
   cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+button:hover {
+  background: rgba(63, 159, 107, 0.22);
+}
+
+a {
+  color: var(--green-text);
 }
 
 /* стрелочка для раскрывающихся блоков */

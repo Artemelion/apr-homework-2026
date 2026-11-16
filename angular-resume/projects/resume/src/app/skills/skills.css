@@ -4,7 +4,7 @@
   --line: #c9c9d1;
   --node: #8a8a96;
   --text: #55555f;
-  --accent: #7f6df2;
+  --accent: #3f9f6b;
   background: var(--bg);
   border-radius: 8px;
   overflow: hidden;
@@ -109,11 +109,12 @@ line.active {
   height: 28px;
   padding: 0;
   font-size: 16px;
-  background: var(--accent);
+  border-radius: 50%;
 }
 
 .zoom .reset {
   width: auto;
+  border-radius: 20px;
   padding: 0 10px;
   font-size: 12px;
 }
