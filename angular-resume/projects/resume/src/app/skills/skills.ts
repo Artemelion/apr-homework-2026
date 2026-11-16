@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild, inject } from '@angular/core';
-import { NgClass, NgStyle } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { I18n, Tr, same } from '../i18n';
 
 interface Group {
@@ -34,7 +34,7 @@ interface View {
 // колесо мыши - масштаб, перетаскивание пустого места - сдвиг, узлы тоже можно таскать
 @Component({
   selector: 'app-skills',
-  imports: [NgClass, NgStyle],
+  imports: [NgClass],
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })
@@ -137,7 +137,6 @@ export class Skills implements OnDestroy {
 
   hovered: string | null = null;
   dragged: GNode | null = null;
-  overGraph = false;
 
   private base: View = { x: 0, y: 0, w: 800, h: 500 };
   view: View = { ...this.base };

@@ -4,12 +4,11 @@ import { Profile } from './profile/profile';
 import { Education } from './education/education';
 import { Experience } from './experience/experience';
 import { Skills } from './skills/skills';
-import { Links } from './links/links';
 import { I18n, Lang } from './i18n';
 
 @Component({
   selector: 'app-root',
-  imports: [NgClass, Profile, Education, Experience, Skills, Links],
+  imports: [NgClass, Profile, Education, Experience, Skills],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -17,8 +16,8 @@ export class App {
   i18n = inject(I18n);
 
   langs: { code: Lang; title: string }[] = [
-    { code: 'ua', title: 'UA' },
     { code: 'ru', title: 'RU' },
+    { code: 'ua', title: 'UA' },
     { code: 'en', title: 'EN' },
   ];
 

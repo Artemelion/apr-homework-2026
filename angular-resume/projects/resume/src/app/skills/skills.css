@@ -32,7 +32,7 @@ line {
   transition: stroke 0.2s, opacity 0.2s;
 }
 
-svg.panning {
+svg {
   cursor: move;
 }
 
@@ -91,16 +91,6 @@ line.active {
 
 .node.active circle {
   filter: drop-shadow(0 0 4px var(--accent));
-}
-
-.hint {
-  position: absolute;
-  left: 12px;
-  bottom: 10px;
-  font-size: 12px;
-  color: var(--text);
-  pointer-events: none;
-  transition: opacity 0.2s;
 }
 
 .zoom {

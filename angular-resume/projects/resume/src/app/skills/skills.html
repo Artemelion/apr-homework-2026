@@ -1,10 +1,7 @@
 <section>
   <h2>{{ i18n.t('skills') }}</h2>
 
-  <div class="graph" (mouseenter)="overGraph = true" (mouseleave)="overGraph = false">
-    <!-- подсказка появляется при наведении на граф -->
-    <div class="hint" [ngStyle]="{ opacity: overGraph ? 1 : 0.6 }">🔍 {{ i18n.t('zoomHint') }}</div>
-
+  <div class="graph">
     <div class="zoom">
       <button (click)="zoomBy(1 / 1.3)">+</button>
       <span>{{ zoom }}%</span>
@@ -16,7 +13,7 @@
       #svg
       [attr.viewBox]="viewBox"
       preserveAspectRatio="xMidYMid meet"
-      [ngClass]="{ focus: hovered, panning: overGraph }"
+      [ngClass]="{ focus: hovered }"
       (wheel)="onWheel($event)"
       (pointerdown)="startPan($event)"
       (pointermove)="onMove($event)"

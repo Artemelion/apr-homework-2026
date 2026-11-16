@@ -27,11 +27,6 @@ const texts: Record<string, Tr> = {
 
   experience: ['Досвід', 'Опыт', 'Experience'],
   skills: ['Навички', 'Навыки', 'Skills'],
-  zoomHint: [
-    'Колесо миші - наблизити / віддалити, перетягніть пусте місце щоб рухати',
-    'Колесо мыши - приблизить / отдалить, тяните пустое место чтобы двигать',
-    'Mouse wheel to zoom in / out, drag empty space to move',
-  ],
   reset: ['Скинути', 'Сбросить', 'Reset'],
   education: ['Освіта', 'Образование', 'Education'],
   university: ['IT STEP University', 'IT STEP University', 'IT STEP University'],
@@ -41,7 +36,8 @@ const texts: Record<string, Tr> = {
     'Bachelor, 122 Computer Science',
   ],
   certificates: ['Сертифікати', 'Сертификаты', 'Certificates'],
-  links: ['Посилання', 'Ссылки', 'Links'],
+  showAll: ['Показати всі', 'Показать все', 'Show all'],
+  showLess: ['Згорнути', 'Свернуть', 'Show less'],
 };
 
 const langIndex: Record<Lang, number> = { ua: 0, ru: 1, en: 2 };
@@ -49,7 +45,7 @@ const langIndex: Record<Lang, number> = { ua: 0, ru: 1, en: 2 };
 // сервис переводов, один на всё приложение
 @Injectable({ providedIn: 'root' })
 export class I18n {
-  lang = signal<Lang>((localStorage.getItem('lang') as Lang) || 'ua');
+  lang = signal<Lang>((localStorage.getItem('lang') as Lang) || 'ru');
 
   setLang(lang: Lang) {
     this.lang.set(lang);

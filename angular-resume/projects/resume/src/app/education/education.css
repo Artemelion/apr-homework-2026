@@ -31,3 +31,17 @@
   font-size: 0.9em;
   opacity: 0.7;
 }
+
+.more {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.more:hover {
+  opacity: 1;
+}

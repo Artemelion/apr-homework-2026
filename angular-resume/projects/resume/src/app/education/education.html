@@ -8,11 +8,16 @@
 <section class="certs">
   <h2>{{ i18n.t('certificates') }}</h2>
   <ul>
-    @for (c of certificates; track c.name) {
+    @for (c of visible; track c.name) {
       <li>
         <b>{{ c.name }}</b>
         <span class="issuer">{{ c.issuer }}</span>
       </li>
     }
   </ul>
+
+  <div class="more" [ngClass]="{ open: showAll }" (click)="showAll = !showAll">
+    <span>{{ showAll ? i18n.t('showLess') : i18n.t('showAll') + ' (' + certificates.length + ')' }}</span>
+    <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
+  </div>
 </section>

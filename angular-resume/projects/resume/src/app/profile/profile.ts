@@ -13,6 +13,7 @@ export class Profile {
   phone = '+380960707437';
   phoneText = '+380 96 070 74 37';
   email = 'artommorareboy@gmail.com';
+  github = 'https://github.com/Artemelion';
   telegram = 'https://t.me/artyom_morar';
   photo = 'photo.jpg'; // фото из телеграма, лежит в папке public
   showContacts = true;
