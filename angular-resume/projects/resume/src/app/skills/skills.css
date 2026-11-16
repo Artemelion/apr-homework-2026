@@ -1,0 +1,36 @@
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.skill-name {
+  width: 170px;
+}
+
+.bar {
+  flex: 1;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fill {
+  color: white;
+  font-size: 12px;
+  padding: 3px 6px;
+  box-sizing: border-box;
+}
+
+.high {
+  background: #4caf50;
+}
+
+.middle {
+  background: #ff9800;
+}
+
+.low {
+  background: #f44336;
+}

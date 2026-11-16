@@ -1,0 +1,15 @@
+<section>
+  <h2>Опыт работы</h2>
+
+  @for (job of jobs; track job.company; let i = $index) {
+    <div class="job" [ngClass]="{ current: job.current, open: selected === i }" (click)="select(i)">
+      <div class="job-head">
+        <b>{{ job.position }}</b> - {{ job.company }}
+        <span class="period">{{ job.period }}</span>
+      </div>
+      @if (selected === i) {
+        <p>{{ job.description }}</p>
+      }
+    </div>
+  }
+</section>

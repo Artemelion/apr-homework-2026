@@ -1,0 +1,28 @@
+<section>
+  <h2>Навыки</h2>
+
+  @for (skill of skills; track skill.name) {
+    <div class="skill">
+      <span class="skill-name">{{ skill.name }}</span>
+      <div class="bar">
+        <div class="fill" [ngClass]="levelClass(skill.level)" [ngStyle]="{ width: skill.level + '%' }">
+          {{ skill.level }}%
+        </div>
+      </div>
+    </div>
+  }
+
+  <h2>Знания</h2>
+  <ul>
+    @for (item of knowledge; track item) {
+      <li>{{ item }}</li>
+    }
+  </ul>
+
+  <h2>Сертификаты</h2>
+  <ul>
+    @for (cert of certificates; track cert) {
+      <li>{{ cert }}</li>
+    }
+  </ul>
+</section>
