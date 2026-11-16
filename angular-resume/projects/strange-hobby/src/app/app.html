@@ -1,0 +1,14 @@
+<main>
+  <h1>Странное хобби</h1>
+  <h2>{{ hobby }}</h2>
+  <p>{{ description }}</p>
+
+  <div class="images">
+    @for (img of images; track img.src) {
+      <figure>
+        <img [src]="img.src" [alt]="img.caption" />
+        <figcaption>{{ img.caption }}</figcaption>
+      </figure>
+    }
+  </div>
+</main>
